@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/button";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
 
   return (
     <div>
-      <button className="bg-sky-500 border">新規作成</button>
+      <Button className="bg-sky-500">新規作成</Button>
       <div className="container mx-auto">
         <div className="overflow-x-auto">
           <table className="table-auto w-full text-left whitespace-no-wrap">
@@ -27,18 +28,29 @@ export default function Home() {
               </tr>
             </thead>
             <tbody className="bg-white">
-              {accounts.map((account) => {
-                return (
-                  <>
-                    <tr>
-                      <td className="px-4 py-3 border">{account.name}</td>
-                      <td className="px-4 py-3 border text-red-600 hover:text-red-900 cursor-pointer">
-                        削除
-                      </td>
-                    </tr>
-                  </>
-                );
-              })}
+              {accounts.map((account) => (
+                <tr key={account.id}>
+                  <td className="px-4 py-3 border">
+                    <input
+                      type="text"
+                      value={account.name}
+                      className="w-full px-2 py-1 border rounded"
+                      onChange={(e) => {
+                        const newAccounts = accounts.map((acc) => {
+                          if (acc.id === account.id) {
+                            return { ...acc, name: e.target.value };
+                          }
+                          return acc;
+                        });
+                        setAccounts(newAccounts);
+                      }}
+                    />
+                  </td>
+                  <td className="px-4 py-3 border">
+                    <Button className="bg-red-500 ">削除</Button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
