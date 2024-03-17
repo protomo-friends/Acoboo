@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   type Account = {
-    id: number;
+    id?: number;
     name: string;
   };
   const [accounts, setAccounts] = useState<Account[]>([]);
@@ -17,7 +17,14 @@ export default function Home() {
 
   return (
     <div>
-      <Button className="bg-sky-500">新規作成</Button>
+      <Button
+        className="bg-sky-500"
+        onClick={() => {
+          setAccounts([{ id: undefined, name: "" }, ...accounts]);
+        }}
+      >
+        新規作成
+      </Button>
       <div className="container mx-auto">
         <div className="overflow-x-auto">
           <table className="table-auto w-full text-left whitespace-no-wrap">
@@ -47,7 +54,16 @@ export default function Home() {
                     />
                   </td>
                   <td className="px-4 py-3 border">
-                    <Button className="bg-red-500 ">削除</Button>
+                    <Button
+                      className="bg-red-500 "
+                      onClick={() => {
+                        setAccounts(
+                          accounts.filter((acc) => acc.id !== account.id)
+                        );
+                      }}
+                    >
+                      削除
+                    </Button>
                   </td>
                 </tr>
               ))}
