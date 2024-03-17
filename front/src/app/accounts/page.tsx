@@ -17,6 +17,7 @@ export default function Home() {
 
   return (
     <div>
+      <h1 className="text-xl bg-gray-300">口座一覧</h1>
       <Button
         className="bg-sky-500"
         onClick={() => {
@@ -29,7 +30,7 @@ export default function Home() {
         <div className="overflow-x-auto">
           <table className="table-auto w-full text-left whitespace-no-wrap">
             <thead>
-              <tr className="text-sm font-semibold tracking-wide  bg-gray-100">
+              <tr className="text-sm font-semibold tracking-wide  bg-gray-300">
                 <th className="px-4 py-3 border">名称</th>
                 <th className="px-4 py-3 border">削除</th>
               </tr>
