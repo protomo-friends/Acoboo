@@ -5,7 +5,7 @@ import { useState } from "react";
 type Transaction = {
   id: number;
   name: string;
-  eventType: "income" | "expense";
+  eventType: "income" | "expense"; // これいらなくね? amountの正負でわかる。
   category: { id: number; name: string };
   account: { id: number; name: string };
   amount: number;
@@ -85,6 +85,8 @@ export default function Home() {
           </table>
         </div>
       </div>
+      <h1 className="text-xl bg-gray-300">収入合計:{totalIncome}円</h1>
+      <h1 className="text-xl bg-gray-300">支出合計:{totalExpenses}円</h1>
     </div>
   );
 }
