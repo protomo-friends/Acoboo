@@ -12,7 +12,7 @@ type Transaction = {
 };
 
 export default function Home() {
-  const [transactions, setTransactinos] = useState([
+  const [transactions, setTransactions] = useState([
     {
       id: 1,
       name: "m1",
