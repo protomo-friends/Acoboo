@@ -415,6 +415,8 @@ components:
           type: integer
           format: int64
           example: 1
+          x-oapi-codegen-extra-tags:
+            gorm: primaryKey
         name:
           type: string
           example: 食費
@@ -427,6 +429,8 @@ components:
           type: integer
           format: int64
           example: 2
+          x-oapi-codegen-extra-tags:
+            gorm: primaryKey
         name:
           type: string
           example: 交際費
@@ -439,6 +443,8 @@ components:
           type: integer
           format: int64
           example: 3
+          x-oapi-codegen-extra-tags:
+            gorm: primaryKey
         name:
           type: string
           example: 交通費
@@ -457,6 +463,8 @@ components:
           type: integer
           format: int64
           example: 1
+          x-oapi-codegen-extra-tags:
+            gorm: primaryKey
         name:
           type: string
           example: テスト銀行
@@ -472,6 +480,8 @@ components:
           type: integer
           format: int64
           example: 10
+          x-oapi-codegen-extra-tags:
+            gorm: primaryKey
         name:
           type: string
           example: スーパーで買い物
@@ -501,6 +511,8 @@ components:
           type: integer
           format: int64
           example: 11
+          x-oapi-codegen-extra-tags:
+            gorm: primaryKey
         name:
           type: string
           example: レストランで食事
@@ -524,6 +536,8 @@ components:
           type: integer
           format: int64
           example: 12
+          x-oapi-codegen-extra-tags:
+            gorm: primaryKey
         name:
           type: string
           example: コンビニで買い物
