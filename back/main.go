@@ -1,3 +1,7 @@
-package back
+package main
 
-func main() {}
+import "fmt"
+
+func main() {
+	fmt.Println("Hello world!")
+}
