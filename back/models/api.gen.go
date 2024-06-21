@@ -36,10 +36,10 @@ type ServerInterface interface {
 	AddCategory(ctx echo.Context) error
 	// Deletes a category
 	// (DELETE /categories/{id})
-	DeleteEvent(ctx echo.Context, id int64) error
+	DeleteCategory(ctx echo.Context, id int64) error
 	// Find cateogry by ID
 	// (GET /categories/{id})
-	GetEventById(ctx echo.Context, id int64) error
+	GetCategoryById(ctx echo.Context, id int64) error
 	// Updates a category in the store with form data
 	// (POST /categories/{id})
 	UpdateCategory(ctx echo.Context, id int64, params UpdateCategoryParams) error
@@ -51,7 +51,7 @@ type ServerInterface interface {
 	AddMonetaryEvent(ctx echo.Context) error
 	// Deletes a monetary event
 	// (DELETE /monetary-events/{id})
-	DeletemonetaryEvent(ctx echo.Context, id int64) error
+	DeleteMonetaryEvent(ctx echo.Context, id int64) error
 	// Find monetary event by ID
 	// (GET /monetary-events/{id})
 	GetMonetaryEventById(ctx echo.Context, id int64) error
@@ -165,8 +165,8 @@ func (w *ServerInterfaceWrapper) AddCategory(ctx echo.Context) error {
 	return err
 }
 
-// DeleteEvent converts echo context to params.
-func (w *ServerInterfaceWrapper) DeleteEvent(ctx echo.Context) error {
+// DeleteCategory converts echo context to params.
+func (w *ServerInterfaceWrapper) DeleteCategory(ctx echo.Context) error {
 	var err error
 	// ------------- Path parameter "id" -------------
 	var id int64
@@ -177,12 +177,12 @@ func (w *ServerInterfaceWrapper) DeleteEvent(ctx echo.Context) error {
 	}
 
 	// Invoke the callback with all the unmarshaled arguments
-	err = w.Handler.DeleteEvent(ctx, id)
+	err = w.Handler.DeleteCategory(ctx, id)
 	return err
 }
 
-// GetEventById converts echo context to params.
-func (w *ServerInterfaceWrapper) GetEventById(ctx echo.Context) error {
+// GetCategoryById converts echo context to params.
+func (w *ServerInterfaceWrapper) GetCategoryById(ctx echo.Context) error {
 	var err error
 	// ------------- Path parameter "id" -------------
 	var id int64
@@ -193,7 +193,7 @@ func (w *ServerInterfaceWrapper) GetEventById(ctx echo.Context) error {
 	}
 
 	// Invoke the callback with all the unmarshaled arguments
-	err = w.Handler.GetEventById(ctx, id)
+	err = w.Handler.GetCategoryById(ctx, id)
 	return err
 }
 
@@ -247,8 +247,8 @@ func (w *ServerInterfaceWrapper) AddMonetaryEvent(ctx echo.Context) error {
 	return err
 }
 
-// DeletemonetaryEvent converts echo context to params.
-func (w *ServerInterfaceWrapper) DeletemonetaryEvent(ctx echo.Context) error {
+// DeleteMonetaryEvent converts echo context to params.
+func (w *ServerInterfaceWrapper) DeleteMonetaryEvent(ctx echo.Context) error {
 	var err error
 	// ------------- Path parameter "id" -------------
 	var id int64
@@ -259,7 +259,7 @@ func (w *ServerInterfaceWrapper) DeletemonetaryEvent(ctx echo.Context) error {
 	}
 
 	// Invoke the callback with all the unmarshaled arguments
-	err = w.Handler.DeletemonetaryEvent(ctx, id)
+	err = w.Handler.DeleteMonetaryEvent(ctx, id)
 	return err
 }
 
@@ -346,12 +346,12 @@ func RegisterHandlersWithBaseURL(router EchoRouter, si ServerInterface, baseURL 
 	router.POST(baseURL+"/accounts/:id", wrapper.UpdateAccount)
 	router.GET(baseURL+"/categories", wrapper.GetCategories)
 	router.POST(baseURL+"/categories", wrapper.AddCategory)
-	router.DELETE(baseURL+"/categories/:id", wrapper.DeleteEvent)
-	router.GET(baseURL+"/categories/:id", wrapper.GetEventById)
+	router.DELETE(baseURL+"/categories/:id", wrapper.DeleteCategory)
+	router.GET(baseURL+"/categories/:id", wrapper.GetCategoryById)
 	router.POST(baseURL+"/categories/:id", wrapper.UpdateCategory)
 	router.GET(baseURL+"/monetary-events", wrapper.GetMonetaryEvents)
 	router.POST(baseURL+"/monetary-events", wrapper.AddMonetaryEvent)
-	router.DELETE(baseURL+"/monetary-events/:id", wrapper.DeletemonetaryEvent)
+	router.DELETE(baseURL+"/monetary-events/:id", wrapper.DeleteMonetaryEvent)
 	router.GET(baseURL+"/monetary-events/:id", wrapper.GetMonetaryEventById)
 	router.POST(baseURL+"/monetary-events/:id", wrapper.UpdateMonetaryEvent)
 

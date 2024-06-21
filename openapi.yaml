@@ -135,7 +135,7 @@ paths:
         - monetary events
       summary: Deletes a monetary event
       description: delete a monetary event
-      operationId: deletemonetary event
+      operationId: deleteMonetaryEvent
       parameters:
         - name: id
           in: path
@@ -338,7 +338,7 @@ paths:
         - categories
       summary: Find cateogry by ID
       description: Returns a single cateogry
-      operationId: getEventById
+      operationId: getCategoryById
       parameters:
         - name: id
           in: path
@@ -393,7 +393,7 @@ paths:
         - categories
       summary: Deletes a category
       description: delete a category
-      operationId: deleteEvent
+      operationId: deleteCategory
       parameters:
         - name: id
           in: path
