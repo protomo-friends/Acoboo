@@ -422,40 +422,10 @@ components:
           example: 食費
       xml:
         name: category
-    Category1:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 2
-          x-oapi-codegen-extra-tags:
-            gorm: primaryKey
-        name:
-          type: string
-          example: 交際費
-      xml:
-        name: category
-    Category2:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 3
-          x-oapi-codegen-extra-tags:
-            gorm: primaryKey
-        name:
-          type: string
-          example: 交通費
-      xml:
-        name: category
     Categories:
       type: array
       items:
-        anyOf:
-          - $ref: "#/components/schemas/Category1"
-          - $ref: "#/components/schemas/Category2"
+        $ref: "#/components/schemas/Category"
     Account:
       type: object
       properties:
@@ -498,61 +468,7 @@ components:
     MonetaryEvents:
       type: array
       items:
-        anyOf:
-          - $ref: "#/components/schemas/MonetaryEvent1"
-          - $ref: "#/components/schemas/MonetaryEvent2"
-    MonetaryEvent1:
-      required:
-        - name
-        - eventType
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 11
-          x-oapi-codegen-extra-tags:
-            gorm: primaryKey
-        name:
-          type: string
-          example: レストランで食事
-        eventType:
-          type: string
-          description: 収入/支出
-          enum:
-            - income
-            - expense
-        category:
-          $ref: "#/components/schemas/Category"
-        account:
-          $ref: "#/components/schemas/Account"
-    MonetaryEvent2:
-      required:
-        - name
-        - eventType
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-          example: 12
-          x-oapi-codegen-extra-tags:
-            gorm: primaryKey
-        name:
-          type: string
-          example: コンビニで買い物
-        eventType:
-          type: string
-          description: 収入/支出
-          enum:
-            - income
-            - expense
-        category:
-          $ref: "#/components/schemas/Category"
-        account:
-          $ref: "#/components/schemas/Account"
-      xml:
-        name: pet
+        $ref: "#/components/schemas/MonetaryEvent"
     ApiResponse:
       type: object
       properties:
