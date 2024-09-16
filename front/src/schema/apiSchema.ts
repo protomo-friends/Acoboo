@@ -19,27 +19,7 @@ export interface Category {
   name?: string;
 }
 
-export interface Category1 {
-  /**
-   * @format int64
-   * @example 2
-   */
-  id?: number;
-  /** @example "交際費" */
-  name?: string;
-}
-
-export interface Category2 {
-  /**
-   * @format int64
-   * @example 3
-   */
-  id?: number;
-  /** @example "交通費" */
-  name?: string;
-}
-
-export type Categories = (Category1 | Category2)[];
+export type Categories = Category[];
 
 export interface Account {
   /**
@@ -65,35 +45,7 @@ export interface MonetaryEvent {
   account?: Account;
 }
 
-export type MonetaryEvents = (MonetaryEvent1 | MonetaryEvent2)[];
-
-export interface MonetaryEvent1 {
-  /**
-   * @format int64
-   * @example 11
-   */
-  id?: number;
-  /** @example "レストランで食事" */
-  name: string;
-  /** 収入/支出 */
-  eventType: "income" | "expense";
-  category?: Category;
-  account?: Account;
-}
-
-export interface MonetaryEvent2 {
-  /**
-   * @format int64
-   * @example 12
-   */
-  id?: number;
-  /** @example "コンビニで買い物" */
-  name: string;
-  /** 収入/支出 */
-  eventType: "income" | "expense";
-  category?: Category;
-  account?: Account;
-}
+export type MonetaryEvents = MonetaryEvent[];
 
 export interface ApiResponse {
   /** @format int32 */
